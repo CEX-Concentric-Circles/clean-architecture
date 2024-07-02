@@ -30,13 +30,14 @@ class InventoryService {
 
     // i initially named the function removeFromInventory but i think decreaseProductStockFromInventory is more descriptive
     // plus, removeFromInventory will be used to remove the whole stock of a product from the inventory
-    fun decreaseProductStockFromInventory(productDTO: ProductDTO, amount: Int = 1) {
+    fun decreaseProductStockFromInventory(productDTO: ProductDTO, amount: Int = 1): Boolean {
         val product = productService.getProductById(productDTO.productId ?: UUID.randomUUID())
 
         val inventory = productDTO.productId?.let { inventoryRepository.findInventoryByProductId(it) }
 
         if (inventory != null) {
             inventory.productQuantity -= amount
+            return true
         } else {
             // TODO: maybe throw a more descriptive exception?
             throw Exception("Product not found in inventory")
