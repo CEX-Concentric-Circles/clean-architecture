@@ -10,5 +10,5 @@ class RemoveProductFromInventory (private val inventoryService: InventoryService
     fun removeProductFromInventory(productDTO: ProductDTO): Boolean {
         return inventoryService.removeProductFromInventory(productDTO)
     }
-    
+
 }
