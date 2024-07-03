@@ -5,9 +5,9 @@ import concentric_circles.clean_architecture.service.InventoryService
 import org.springframework.stereotype.Service
 
 @Service
-class DecreaseProductStockFromInventory (private val inventoryService: InventoryService) {
+class DecreaseProductStockFromInventoryUseCase (private val inventoryService: InventoryService) {
 
-    fun removeProductFromInventory(productDTO: ProductDTO, amount: Int = 1) {
+    fun removeProductFromInventory(productDTO: ProductDTO, amount: Int = 1): Boolean {
         return inventoryService.decreaseProductStockFromInventory(productDTO, amount)
     }
 
